@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty_app/Model/CharacterRepositories/Character.dart';
 import 'package:rick_and_morty_app/Model/CharacterRepositories/CharacterModel.dart';
 import 'package:rick_and_morty_app/View/CharacterCardBuild.dart';
-import 'package:rick_and_morty_app/ViewModel/LocalData/hive_service.dart';
+import 'package:rick_and_morty_app/Model/LocalData/hive_service.dart';
 import 'package:rick_and_morty_app/ViewModel/RickApi/RickApi_bloc.dart';
 import 'package:rick_and_morty_app/ViewModel/RickApi/RickApi_event.dart';
 import 'package:rick_and_morty_app/ViewModel/RickApi/RickApi_state.dart';

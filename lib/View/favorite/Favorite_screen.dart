@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/Model/CharacterRepositories/CharacterModel.dart';
 import 'package:rick_and_morty_app/View/CharacterCardBuild.dart';
-import 'package:rick_and_morty_app/ViewModel/LocalData/hive_service.dart';
+import 'package:rick_and_morty_app/Model/LocalData/hive_service.dart';
 
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({super.key});
