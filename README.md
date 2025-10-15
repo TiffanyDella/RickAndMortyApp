@@ -5,6 +5,13 @@ Rick and Morty App это простое приложение позволяющ
 2. Ввести в терминал Flutter pub get
 3. Выполнить Flutter run
 
+
 Dart SDK Version: 3.9.2
 Flutter Version: 3.35.5
+
+dio: ^5.9.0
+bloc: ^9.0.1
+flutter_bloc: ^9.1.1
+hive: ^2.2.3
+hive_flutter: ^1.1.0
 
