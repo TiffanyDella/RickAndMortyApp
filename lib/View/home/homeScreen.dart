@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty_app/Model/CharacterRepositories/Character.dart';
 import 'package:rick_and_morty_app/Model/CharacterRepositories/CharacterModel.dart';
 import 'package:rick_and_morty_app/View/CharacterCardBuild.dart';
-import 'package:rick_and_morty_app/Model/LocalData/hive_service.dart';
+import 'package:rick_and_morty_app/Model/DataSave/hive_service.dart';
 import 'package:rick_and_morty_app/ViewModel/RickApi/RickApi_bloc.dart';
 import 'package:rick_and_morty_app/ViewModel/RickApi/RickApi_event.dart';
 import 'package:rick_and_morty_app/ViewModel/RickApi/RickApi_state.dart';
@@ -67,7 +67,6 @@ class _HomeScreenState extends State<HomeScreen> {
     if (hasInternet) {
       _characterListBloc.add(RickapiLoad(forceRefresh: true));
     } else {
-      // Нет интернета - загружаем кэш
       final cachedCharacters = _hiveService.getCachedCharacters();
       if (cachedCharacters.isNotEmpty) {
         _characterListBloc.add(RickapiLoadFromCache(cachedCharacters));
