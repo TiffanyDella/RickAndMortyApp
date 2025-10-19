@@ -1,9 +1,8 @@
-
-
-import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/Model/CharacterRepositories/CharacterModel.dart';
 
-@immutable
+
+
+
 abstract class RickApiState {
   const RickApiState();
 }
@@ -16,6 +15,9 @@ class RickapiLoadingMore extends RickApiState {
   final List<CharacterModel> currentCharacters;
   
   const RickapiLoadingMore(this.currentCharacters);
+  
+  @override
+  List<Object> get props => [currentCharacters];
 }
 
 class RickapiLoaded extends RickApiState {
@@ -28,7 +30,7 @@ class RickapiLoaded extends RickApiState {
     required this.characterList,
     required this.hasMore,
     required this.currentPage,
-    this.isLoadingMore = false,
+    required this.isLoadingMore,
   });
 
   RickapiLoaded copyWith({
@@ -44,10 +46,25 @@ class RickapiLoaded extends RickApiState {
       isLoadingMore: isLoadingMore ?? this.isLoadingMore,
     );
   }
+  
+  @override
+  List<Object> get props => [characterList, hasMore, currentPage, isLoadingMore];
+}
+
+class RickapiCacheLoaded extends RickApiState {
+  final List<CharacterModel> cachedCharacters;
+  
+  const RickapiCacheLoaded(this.cachedCharacters);
+  
+  @override
+  List<Object> get props => [cachedCharacters];
 }
 
 class RickapiError extends RickApiState {
   final Exception exception;
   
   const RickapiError(this.exception);
+  
+  @override
+  List<Object> get props => [exception];
 }

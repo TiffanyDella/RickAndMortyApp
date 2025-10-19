@@ -7,10 +7,10 @@ import 'package:rick_and_morty_app/rickAndMortyApp.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
-
   await Hive.initFlutter();
   Hive.registerAdapter(CharacterModelAdapter());
   await Hive.openBox<CharacterModel>('favorites_box');
+  await Hive.openBox<CharacterModel>('characters_cache_box');
 
   runApp(const MainApp());
 }

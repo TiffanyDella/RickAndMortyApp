@@ -1,4 +1,3 @@
-// RickApi_bloc.dart
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:rick_and_morty_app/Model/CharacterRepositories/AbtractCharacterList.dart';
@@ -16,6 +15,7 @@ class RickApiBloc extends Bloc<RickApiEvent, RickApiState> {
   RickApiBloc(this.repository) : super(RickapiInitial()) {
     on<RickapiLoad>(_onRickapiLoad);
     on<RickapiLoadMore>(_onRickapiLoadMore);
+    on<RickapiLoadFromCache>(_onRickapiLoadFromCache);
   }
 
   Future<void> _onRickapiLoad(
@@ -24,8 +24,10 @@ class RickApiBloc extends Bloc<RickApiEvent, RickApiState> {
   ) async {
     try {
       emit(RickapiLoading());
+      if (event.forceRefresh) {
+        _currentPage = 1;
+      }
       
-      _currentPage = 1;
       final characters = await repository.getCharacters(page: _currentPage);
       _hasMore = await (repository as CharacterRepository).hasNextPage(_currentPage);
       
@@ -53,9 +55,9 @@ class RickApiBloc extends Bloc<RickApiEvent, RickApiState> {
     }
 
     try {
+      final nextPage = currentState.currentPage + 1;
       emit(currentState.copyWith(isLoadingMore: true));
       
-      final nextPage = currentState.currentPage + 1;
       final newCharacters = await repository.getCharacters(page: nextPage);
       _hasMore = await (repository as CharacterRepository).hasNextPage(nextPage);
       
@@ -70,5 +72,12 @@ class RickApiBloc extends Bloc<RickApiEvent, RickApiState> {
     } catch (e) {
       emit(currentState.copyWith(isLoadingMore: false));
     }
+  }
+
+  void _onRickapiLoadFromCache(
+    RickapiLoadFromCache event,
+    Emitter<RickApiState> emit,
+  ) {
+    emit(RickapiCacheLoaded(event.cachedCharacters));
   }
 }

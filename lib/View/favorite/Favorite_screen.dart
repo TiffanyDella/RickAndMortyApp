@@ -74,7 +74,6 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
       'Dead': Icons.cancel,
       'unknown': Icons.help,
     };
-
     showMenu<String>(
       context: context,
       position: const RelativeRect.fromLTRB(1, 1, 0, 0),

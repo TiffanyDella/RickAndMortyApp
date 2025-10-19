@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:rick_and_morty_app/View/favorite/Favorite_screen.dart';
 import 'package:rick_and_morty_app/View/home/homeScreen.dart';
 
@@ -66,7 +65,7 @@ class _RickAndMortyAppState extends State<RickAndMortyApp> {
           unselectedItemColor: Colors.grey,
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "Главная"),
-            BottomNavigationBarItem(icon: Icon(Icons.calendar_month), label: "Создать"),
+            BottomNavigationBarItem(icon: Icon(Icons.star_border), label: "Избранные"),
           
           ],
         ),
