@@ -1,4 +1,3 @@
-// CharacterRepository.dart
 import 'package:dio/dio.dart';
 import 'package:rick_and_morty_app/Model/CharacterRepositories/CharacterModel.dart';
 import 'package:rick_and_morty_app/Model/CharacterRepositories/AbtractCharacterList.dart';
